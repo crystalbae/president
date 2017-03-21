@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'main/index'
-  root 'main#index'
+
+  # root 'main/index'
+  post 'main/index' => 'main#create'
+  delete 'comment/:id' => 'main#destroy'
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   match 'auth/:provider/callback', to: 'sessions#create', via: [:get, :post]
