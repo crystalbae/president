@@ -1,3 +1,55 @@
 // Place all the styles related to the Main controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.area {
+  border-top: 1px solid #E9E9E9;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.area h2 {
+  text-align: center;
+}
+
+.d-day h2 {
+  color: #D0011B;
+  font-size: 40px;
+}
+
+.rating-chart h2 {
+  font-size: 20px;
+}
+
+.rating-chart article {
+  width: 572px;
+  margin: 0 auto;
+}
+
+.rating-chart article .btn {
+  font-size: 120px;
+  color: gray;
+}
+
+.rating-chart article #chartdiv {
+  width: 400px;
+  height: 250px;
+  margin: 25px;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.rating-chart article #chartdiv a {
+  visibility: hidden;
+}
+
+.comment .input-area textarea {
+  width: 700px;
+  border-radius: 0;
+}
+.comment .input-area button {
+  border: none;
+  background-color: #4990E2;
+  border-radius: 0;
+  padding: 8px 22px;
+}

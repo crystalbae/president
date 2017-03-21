@@ -12,4 +12,61 @@
  *
  *= require_tree .
  *= require_self
+ *= require bootstrap
  */
+
+h1.title {
+  font-size: 80px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+h1.title a {
+  text-decoration: none;
+  color: black;
+}
+
+nav {
+  margin-bottom: 30px;
+}
+
+nav ul {
+  width: 900px;
+  height: 40px;
+  padding: 0;
+  margin: 0 auto;
+  list-style-type: none;
+  vertical-align: middle;
+ }
+
+nav ul li {
+  line-height: 40px;
+  float: left;
+  text-align: center;
+}
+
+.navbar {
+  min-height: 40px !important;
+}
+
+.navbar-default {
+  background-color: #2686C0 !important;
+}
+
+.navbar-default a.menu-link {
+  color: white;
+}
+
+a.menu-link {
+  font-size: 18px;
+  margin-left: 70px;
+  margin-right: 70px;
+  color: black;
+  display: block;
+  text-decoration: none;
+}
+
+a.menu-link:hover {
+  color: #4990E2;
+}
