@@ -37,6 +37,8 @@ gem "font-awesome-rails"
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 
+gem 'kaminari'
+
 gem 'figaro'
 
 group :development do

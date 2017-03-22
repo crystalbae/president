@@ -1,0 +1,4 @@
+(function($){
+  $("#thumb-up-<%= @comment.id %>").html("<%= @comment.agree %>");
+  $("#thumb-down-<%= @comment.id %>").html("<%= @comment.disagree %>");
+})(jQuery)

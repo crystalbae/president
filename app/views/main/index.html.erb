@@ -13,8 +13,10 @@
   </article>
 </div>
 
+
 <div class="comments area">
   <h2>후보에게 질문하기</h2>
+
   <div class="input-area">
     <!-- 페이스북 로그인 -->
     <div class="login-btn" id="user-widget">
@@ -25,8 +27,9 @@
         <%= link_to "Sign in with Facebook", "/auth/facebook", id: "sign_in" %>
       <% end %>
     </div>
+
     <!-- 댓글 입력창-->
-    <%= form_for :comment do |f| %>
+    <%= form_for :comment, remote: true do |f| %>
       <%= f.text_area :content, :class => "form-control", :rows => "2", :placeholder => "질문을 입력하세요" %>
       <% if current_user %>
         <%= f.submit "등록" %>
@@ -35,33 +38,14 @@
       <% end %>
     <% end %>
   </div>
+
   <!-- 댓글 목록 -->
-  <div class="comment-list">
+  <div class="comment-list" id="comments">
     <a href="#"><span id="like">호감순</span></a>
     <a href="#"><span id="new">최신순</span></a>
     <% @comments.each do |comment| %>
-    <div class="comment">
-      <img src="/assets/moon.jpeg">
-      <ul>
-        <li><span class="writer"><%= comment.writer %></span></li>
-        <li>
-          <p class="content"><%= comment.content %></p>
-        </li>
-        <li>
-          <span class="date"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></span>
-          <% if current_user %>
-            <% if session[:user_id] = comment.user_id %>
-              <span> | </span>
-              <%= link_to '삭제', { action: :destroy, id: comment.id },
-                method: :delete,
-                data: { confirm: '댓글을 삭제하시겠습니까?' } %>
-            <% end %>
-          <% end %>
-        </li>
-      </ul>
-      <a href="#" class="thumbs"><i class="fa fa-thumbs-o-down" aria-hidden="true"> <%= comment.disagree %></i></a>
-      <a href="#" class="thumbs"><i class="fa fa-thumbs-o-up" aria-hidden="true"> <%= comment.agree %></i></a>
-    </div>
+      <%= render partial: "comment", locals: { comment: comment } %>
     <% end %>
+    <%= paginate @comments %>
   </div>
 </div>

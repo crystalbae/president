@@ -16,3 +16,5 @@
 //= require_tree .
 //= require facebook
 //= require chart
+//= require jquery.infinitescroll
+//= require comments
