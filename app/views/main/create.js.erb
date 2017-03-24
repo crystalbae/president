@@ -1,5 +1,5 @@
 (function($){
-  $("#comment_content").val("");
+  $("#comment-content").val("");
   var html = "<%= escape_javascript(render(partial: 'comment', locals: {comment: @comment})) %>";
   $("#comments").append(html);
 })(jQuery)

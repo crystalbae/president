@@ -1,8 +1,10 @@
 <div class="comment" id="comment-<%= comment.id %>">
   <ul>
+    <img src="assets/ljm.jpeg">
     <li><span class="writer"><%= comment.writer %></span></li>
-    <li><%= comment.content %></li>
-    <li>
+    <li><span class="selected-name"><i class="fa fa-check"></i> 이재명 후보님</span></li>
+    <li class="content"><p><%= comment.content %></p></li>
+    <li class="comment-date-delete">
       <span class="date"><%= comment.created_at.strftime("%Y-%m-%d %H:%M") %></span>
       <% if current_user %>
         <% if session[:user_id] = comment.user_id %>
@@ -10,12 +12,16 @@
           <%= link_to "삭제", { action: :destroy, id: comment.id }, method: :delete, remote: true, data: { confirm: "댓글을 삭제하시겠습니까?" } %>
         <% end %>
       <% end %>
-    </li>
-  </ul>
-  <%= link_to comment_unlike_path(id: comment.id), class: "thumbs", remote: true do %>
-    <i class="fa fa-thumbs-o-down" id="thumb-down-<%= comment.id %>"><%= comment.disagree %></i>
-  <% end %>
-  <%= link_to comment_like_path(id: comment.id), class: "thumbs", remote: true do %>
-    <i class="fa fa-thumbs-o-up" id="thumb-up-<%= comment.id %>"><%= comment.agree %></i>
-  <% end %>
+      <%= link_to comment_like_path(id: comment.id, vote: "unlike"), class: "thumbs", remote: true do %>
+        <i class="fa fa-thumbs-o-down" id="thumb-down-<%= comment.id %>"> <%= comment.disagree %></i>
+      <% end %>
+      <%= link_to comment_like_path(id: comment.id, vote: "like"), class: "thumbs", remote: true do %>
+        <i class="fa fa-thumbs-o-up" id="thumb-up-<%= comment.id %>"> <%= comment.agree %></i>
+      <% end %>
+  </li>
+</ul>
 </div>
+
+<% if flash[:notice] %>
+  <div class="notice"><%= flash[:notice] %></div>
+<% end %>
