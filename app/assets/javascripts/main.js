@@ -3,10 +3,12 @@
 // You can use CoffeeScript in this file: http://coffeescript.org/
 
 $(function() {
+
+  // 코멘트 글자수 제한
   $('#comment-content').keyup(function (e){
       var content = $(this).val();
-      // $(this).height((content.split('\n').length + 1) + 'em');
       $('#counter').html(content.length + '/300');
   });
   $('#comment-content').keyup();
+
 });

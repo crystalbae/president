@@ -5,7 +5,7 @@
 
 <!-- 대선후보 지지율 -->
 <div class="rating-chart area">
-  <h2>2017.03.17 대선 후보 지지도 (%)</h2>
+  <h2><%= Date.today %> 대선 후보 지지도 (%)</h2>
   <article>
     <span class="left-button btn">&#8249;</span>
     <div id="chartdiv"></div>
@@ -42,11 +42,12 @@
 
   <!-- 댓글 목록 -->
   <div class="comment-list" id="comments">
-    <a href="#"><span id="like">호감순</span></a>
-    <a href="#"><span id="new">최신순</span></a>
-    <% @comments.each do |comment| %>
-      <%= render partial: "comment", locals: { comment: comment } %>
-    <% end %>
-    <%= paginate @comments %>
+    <div class="sort-group">
+      <%= link_to "호감순", comment_best_path(sort: "best"), :class => "sort", :method => :post, remote: true %>
+      <%= link_to "최신순", comment_latest_path(sort: "latest"), :class => "sort on", :method => :post, remote: true %>
+    </div>
+    <div id="comments-js" >
+      <%= render partial: "sort_by", locals: { comments: @comments } %>
+    </div>
   </div>
 </div>

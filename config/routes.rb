@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'main/index'
   get '/comment/like' => 'main#like'
   get '/comment/unlike' => 'main#unlike'
+  post '/comment/best' => 'main#sort_by'
+  post '/comment/latest' => 'main#sort_by'
   post '/' => 'main#create'
   delete '/:id' => 'main#destroy'
 

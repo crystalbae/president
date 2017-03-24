@@ -1,7 +1,7 @@
 class MainController < ApplicationController
   def index
-    # @comments = Comment.all
-    @comments = Comment.order(:created_at).page(params[:page])
+    @comments = Comment.all.sort_by(&:created_at).reverse!
+    # @comments = Comment.order(:created_at).page(params[:page])
   end
 
   def create
@@ -33,7 +33,6 @@ class MainController < ApplicationController
       respond_to do |format|
         format.js
       end
-      # redirect_to :controller => "main", :action => "index"
     end
   end
 
@@ -60,30 +59,20 @@ class MainController < ApplicationController
     end
   end
 
-  # def unlike
-  #   @comment = Comment.find(params[:id])
-  #   @comment.disagree += 1
-  #
-  #   @like = Like.new(params.permit(:user_id, :comment_id))
-  #   @like.user_id = session[:user_id]
-  #   @like.comment_id = @comment.id
-  #   @like.save
-  #
-  #   if @comment.save
-  #     respond_to do |format|
-  #       format.html { redirect_to :back }
-  #       format.js { render :template => "main/like.js.erb" }
-  #     end
-  #   end
-  # end
+  def sort_by
+    if params[:sort] == "latest"
+      @comments = Comment.all.sort_by(&:created_at).reverse!
+    else
+      @comments = Comment.all.sort_by(&:agree).reverse!
+    end
+    respond_to do |format|
+      format.html { redirect_to @comments }
+      format.js
+    end
+  end
 
   private
     def comment_params
       params.require(:comment).permit(:content, :writer, :agree, :disagree)
     end
-
-  # private
-  #   def like_params
-  #     params.require(:like).permit(:user_id, :comment_id)
-  #   end
 end

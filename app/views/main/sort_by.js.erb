@@ -1,0 +1,5 @@
+(function($){
+  var html = "<%= escape_javascript(render(partial: 'sort_by', locals: {comments: @comments})) %>";
+  $("#comments-js").empty();
+  $("#comments-js").append(html);
+})(jQuery)
