@@ -18,6 +18,7 @@
   <h2>후보에게 질문하기</h2>
 
   <div class="input-area">
+
     <!-- 페이스북 로그인 -->
     <div class="login-btn" id="user-widget">
       <% if current_user %>
@@ -30,21 +31,43 @@
 
     <!-- 댓글 입력창-->
     <%= form_for :comment, remote: true do |f| %>
+      <div class="candidate-select">
+        <%= f.select :image_id,
+          options_for_select([['질문해주실 후보를 선택해주세요.', 0],['문재인', 1], ['이재명', 3], ['안희정', 2], ['안철수', 4], ['심상정', 5]], params[:image_id]), {}, { :class => "select-box form-control" } %>
+        <ul>
+          <li><div class="thumbnail first" id="image-1">
+            <img class="image-picker first" src="assets/moon.jpeg" alt="1">
+          </div></li>
+          <li><div class="thumbnail" id="image-3">
+            <img class="image-picker" src="assets/ljm.jpeg" alt="3">
+          </div></li>
+          <li><div class="thumbnail" id="image-2">
+            <img class="image-picker" src="assets/ahj.jpeg" alt="2">
+          </div></li>
+          <li><div class="thumbnail" id="image-4">
+            <img class="image-picker" src="assets/acs.jpeg" alt="4">
+          </div></li>
+          <li><div class="thumbnail last" id="image-5">
+            <img class="image-picker last" src="assets/ssj.jpeg" alt="5">
+          </div></li>
+        </ul>
+      </div>
+
       <%= f.text_area :content, :class => "form-control", :id => "comment-content", :rows => "2", :maxlength => "300", :placeholder => "질문을 입력하세요" %>
-      <span id="counter"> 0/300</span>
       <% if current_user %>
         <%= f.submit "등록", :class => "btn btn-info" %>
       <% else %>
         <button class="btn btn-info">등록</button>
       <% end %>
+      <span id="counter"> 0/300</span>
     <% end %>
   </div>
 
   <!-- 댓글 목록 -->
   <div class="comment-list" id="comments">
     <div class="sort-group">
-      <%= link_to "호감순", comment_best_path(sort: "best"), :class => "sort", :method => :post, remote: true %>
-      <%= link_to "최신순", comment_latest_path(sort: "latest"), :class => "sort on", :method => :post, remote: true %>
+      <%= link_to "호감순", comment_best_path(sort: "best"), :class => "best sort", :method => :post, remote: true %>
+      <%= link_to "최신순", comment_latest_path(sort: "latest"), :class => "latest sort on", :method => :post, remote: true %>
     </div>
     <div id="comments-js" >
       <%= render partial: "sort_by", locals: { comments: @comments } %>

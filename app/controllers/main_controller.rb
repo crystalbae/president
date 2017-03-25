@@ -12,7 +12,7 @@ class MainController < ApplicationController
       @comment.writer = @user.name
       @comment.agree = 0
       @comment.disagree = 0
-      # redirect_to :controller => "main", :action => "index"
+      @comment.image_id = params[:image_id]
 
       if @comment.save
         respond_to do |format|
@@ -73,6 +73,6 @@ class MainController < ApplicationController
 
   private
     def comment_params
-      params.require(:comment).permit(:content, :writer, :agree, :disagree)
+      params.require(:comment).permit(:content, :writer, :agree, :disagree, :user_id, :image_id)
     end
 end

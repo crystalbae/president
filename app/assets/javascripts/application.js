@@ -18,3 +18,4 @@
 //= require chart
 //= require jquery.infinitescroll
 //= require comments
+//= require image-picker

@@ -5,3 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+image_list = [
+  [ "문재인", "assets/moon.jpeg" ],
+  [ "안희정", "assets/ahj.jpeg" ],
+  [ "이재명", "assets/ljm.jpeg" ],
+  [ "안철수", "assets/acs.jpeg" ],
+  [ "심상정", "assets/ssj.jpeg" ],
+]
+
+image_list.each do | name, url |
+  Image.create( name: name, url: url )
+end

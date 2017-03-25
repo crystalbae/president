@@ -1,0 +1,37 @@
+.input-area .candidate-select {
+  width: 604px;
+  margin: 0 auto;
+}
+
+.input-area select.form-control {
+  width: 300px;
+  display: inline-block;
+  position: relative;
+  top: -15px;
+}
+
+.input-area  ul {
+  width: 300px;
+  height: 50px;
+  padding-left: 0px;
+  margin: 5px 0px;
+  list-style-type: none;
+  display: inline-block;
+}
+
+.input-area  ul li {
+  height: 50px;
+  display: inline-block;
+}
+
+.input-area .thumbnail {
+  margin-bottom: 0px;
+}
+
+.input-area .thumbnail.selected {
+  background: #4990E2;
+}
+
+.input-area img {
+  width: 40px;
+}
